@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hariom Bio</title>
+<title>Hariom • Official Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
@@ -14,83 +19,489 @@ box-sizing:border-box;
 }
 
 body{
+font-family:'Poppins',sans-serif;
 height:100vh;
 overflow:hidden;
-font-family:Arial;
-background:black;
 display:flex;
 justify-content:center;
 align-items:center;
+background:#050505;
 color:white;
+position:relative;
 }
 
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
+/* Background */
+
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+
+background:
+radial-gradient(circle at top left,
+rgba(255,0,120,0.15),
+transparent 35%),
+
+radial-gradient(circle at bottom right,
+rgba(0,255,255,0.12),
+transparent 35%),
+
+linear-gradient(
+135deg,
+#050505,
+#120015,
+#001818
+);
+
+z-index:-3;
 }
+
+/* Glow */
+
+.glow1,
+.glow2{
+
+position:absolute;
+border-radius:50%;
+filter:blur(120px);
+z-index:-2;
+
+}
+
+.glow1{
+width:320px;
+height:320px;
+background:rgba(255,0,120,0.18);
+top:-100px;
+left:-100px;
+animation:move1 7s infinite alternate ease-in-out;
+}
+
+.glow2{
+width:320px;
+height:320px;
+background:rgba(0,255,255,0.14);
+bottom:-100px;
+right:-100px;
+animation:move2 7s infinite alternate ease-in-out;
+}
+
+@keyframes move1{
+0%{transform:translate(0,0);}
+100%{transform:translate(40px,30px);}
+}
+
+@keyframes move2{
+0%{transform:translate(0,0);}
+100%{transform:translate(-30px,-20px);}
+}
+
+/* Card */
 
 .card{
-width:340px;
+
+width:360px;
+
 padding:30px;
-border-radius:25px;
+
+border-radius:30px;
+
 background:rgba(255,255,255,0.08);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,0.1);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 0 35px rgba(255,0,120,0.18),
+0 0 70px rgba(0,255,255,0.08);
+
 text-align:center;
-box-shadow:0 0 25px #00ff99;
+
+position:relative;
+
+overflow:hidden;
+
+animation:float 5s infinite ease-in-out;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0px);}
+50%{transform:translateY(-8px);}
+100%{transform:translateY(0px);}
+
+}
+
+/* Shine */
+
+.card::before{
+
+content:'';
+
+position:absolute;
+
+top:-50%;
+left:-120%;
+
+width:180%;
+height:180%;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.08),
+transparent
+);
+
+transform:rotate(25deg);
+
+animation:shine 7s linear infinite;
+
+}
+
+@keyframes shine{
+
+0%{
+left:-120%;
+}
+
+100%{
+left:120%;
+}
+
+}
+
+/* Profile */
+
+.profile-wrap{
+position:relative;
+width:170px;
+height:170px;
+margin:auto;
 }
 
 .profile{
-width:120px;
-height:120px;
+
+width:170px;
+height:170px;
+
 border-radius:50%;
-border:4px solid #00ff99;
+
 object-fit:cover;
-box-shadow:0 0 20px #00ff99;
+object-position:center;
+
+background:#111;
+
+border:4px solid #ff4da6;
+
+box-shadow:
+0 0 20px #ff4da6,
+0 0 60px rgba(255,0,120,0.4);
+
 }
+
+/* Verify */
+
+.verify{
+
+position:absolute;
+
+bottom:10px;
+right:10px;
+
+width:36px;
+height:36px;
+
+border-radius:50%;
+
+background:#0095f6;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:18px;
+font-weight:bold;
+
+box-shadow:0 0 15px #0095f6;
+
+}
+
+/* Heading */
 
 h1{
-margin-top:15px;
-font-size:30px;
-color:#00ff99;
+
+margin-top:22px;
+
+font-size:36px;
+
+font-weight:700;
+
+letter-spacing:1px;
+
 }
+
+/* Username */
+
+.username{
+
+margin-top:6px;
+
+font-size:17px;
+
+color:#d8d8d8;
+
+}
+
+/* Typing */
+
+.typing{
+
+margin-top:14px;
+
+height:28px;
+
+font-size:16px;
+
+font-weight:500;
+
+letter-spacing:1px;
+
+color:#ffb3d9;
+
+}
+
+/* Bio */
 
 .bio{
-margin-top:10px;
-color:#ccc;
-line-height:24px;
+
+margin-top:18px;
+
+line-height:28px;
+
+font-size:15px;
+
+color:#e6e6e6;
+
 }
 
-.counter{
-margin-top:15px;
-font-size:18px;
-color:#00ff99;
+/* Stats */
+
+.stats{
+
+margin-top:24px;
+
+display:flex;
+
+justify-content:space-between;
+
+padding:18px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.05);
+
+border:1px solid rgba(255,255,255,0.06);
+
 }
+
+.stat h2{
+
+font-size:24px;
+
+font-weight:700;
+
+}
+
+.stat p{
+
+margin-top:4px;
+
+font-size:13px;
+
+color:#cccccc;
+
+}
+
+/* Buttons */
 
 .link{
-display:block;
-margin-top:15px;
-padding:15px;
-border-radius:15px;
+
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+gap:12px;
+
+margin-top:16px;
+
+padding:16px;
+
+border-radius:18px;
+
 text-decoration:none;
-background:#111;
+
+background:rgba(255,255,255,0.05);
+
+border:1px solid rgba(255,255,255,0.08);
+
 color:white;
-font-size:18px;
-transition:0.3s;
-border:1px solid #00ff99;
+
+font-size:17px;
+
+font-weight:500;
+
+transition:0.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.link i{
+
+font-size:20px;
+
+color:#ffffff;
+
+transition:0.35s;
+
 }
 
 .link:hover{
-background:#00ff99;
-color:black;
-transform:scale(1.05);
+
+transform:translateY(-3px) scale(1.03);
+
+background:#ff4da6;
+
+box-shadow:
+0 0 20px rgba(255,0,120,0.4);
+
 }
 
-audio{
+.link:hover i{
+
+transform:scale(1.15);
+
+}
+
+/* Button Shine */
+
+.link::before{
+
+content:'';
+
+position:absolute;
+
+top:0;
+left:-100%;
+
 width:100%;
-margin-top:20px;
+height:100%;
+
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.2),
+transparent
+);
+
+transition:0.7s;
+
+}
+
+.link:hover::before{
+
+left:100%;
+
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:22px;
+
+font-size:12px;
+
+letter-spacing:2px;
+
+color:#cfcfcf;
+
+}
+
+/* Floating DM */
+
+.dm{
+
+position:fixed;
+
+bottom:20px;
+right:20px;
+
+width:60px;
+height:60px;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:#ff4da6;
+
+text-decoration:none;
+
+color:white;
+
+font-size:24px;
+
+box-shadow:
+0 0 20px rgba(255,0,120,0.5);
+
+animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-6px);
+}
+
+}
+
+/* Responsive */
+
+@media(max-width:400px){
+
+.card{
+width:92%;
+padding:24px;
+}
+
+.profile-wrap{
+width:150px;
+height:150px;
+}
+
+.profile{
+width:150px;
+height:150px;
+}
+
+h1{
+font-size:30px;
+}
+
 }
 
 </style>
@@ -98,113 +509,132 @@ margin-top:20px;
 
 <body>
 
-<canvas id="bg"></canvas>
+<div class="bg"></div>
+
+<div class="glow1"></div>
+<div class="glow2"></div>
 
 <div class="card">
 
-<img class="profile"
-src="https://i.imgur.com/6VBx3io.png">
+<div class="profile-wrap">
+
+<img class="profile" src="profile.jpg">
+
+<div class="verify">
+✓
+</div>
+
+</div>
 
 <h1>HARIOM</h1>
 
+<div class="username">
+@hariom
+</div>
+
+<div class="typing" id="typing">
+</div>
+
 <div class="bio">
-Gaming • Gym • Editing
-</div>
 
-<div class="counter">
-Followers: <span id="followers">0</span>
-</div>
-
-<a class="link" href="#">
-📸 Instagram
-</a>
-
-<a class="link" href="#">
-▶ YouTube
-</a>
-
-<a class="link" href="#">
-💬 Telegram
-</a>
-
-<a class="link" href="#">
-🎮 My Games
-</a>
-
-<a class="link" href="#">
-💰 Support Me
-</a>
-
-<audio controls autoplay loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+Gym • Gaming • Editing 🔥<br>
+Creator • Hustler • Dreamer ⚡<br>
+Banaras 📍
 
 </div>
+
+<div class="stats">
+
+<div class="stat">
+<h2>120</h2>
+<p>Posts</p>
+</div>
+
+<div class="stat">
+<h2>5K+</h2>
+<p>Followers</p>
+</div>
+
+<div class="stat">
+<h2>180</h2>
+<p>Following</p>
+</div>
+
+</div>
+
+<a class="link" href="https://instagram.com">
+<i class="fa-brands fa-instagram"></i>
+Instagram
+</a>
+
+<a class="link" href="https://youtube.com">
+<i class="fa-brands fa-youtube"></i>
+YouTube
+</a>
+
+<a class="link" href="#">
+<i class="fa-brands fa-telegram"></i>
+Telegram
+</a>
+
+<a class="link" href="#">
+<i class="fa-solid fa-gamepad"></i>
+Gaming
+</a>
+
+<div class="footer">
+⚡ OFFICIAL PROFILE ⚡
+</div>
+
+</div>
+
+<a class="dm" href="#">
+<i class="fa-regular fa-paper-plane"></i>
+</a>
 
 <script>
 
-const followers = document.getElementById("followers");
+const text = [
+
+'Gym Lover 🔥',
+'Video Editor 🎬',
+'Gaming Creator 🎮',
+'Future Millionaire ⚡'
+
+];
 
 let count = 0;
+let index = 0;
+let currentText = '';
+let letter = '';
 
-let x = setInterval(()=>{
+(function type(){
 
-count += 111;
-
-followers.innerText = count.toLocaleString();
-
-if(count >= 50000){
-clearInterval(x);
-followers.innerText = "50,000+";
+if(count === text.length){
+count = 0;
 }
 
-},30);
+currentText = text[count];
 
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+letter = currentText.slice(0, ++index);
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+document.getElementById('typing').textContent = letter;
 
-let particles = [];
+if(letter.length === currentText.length){
 
-for(let i=0;i<100;i++){
+count++;
 
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-dx:(Math.random()-0.5),
-dy:(Math.random()-0.5)
-});
+index = 0;
+
+setTimeout(type,1500);
+
+}else{
+
+setTimeout(type,80);
 
 }
 
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle = "#00ff99";
-
-particles.forEach(p=>{
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-
-p.x += p.dx;
-p.y += p.dy;
-
-if(p.x<0 || p.x>canvas.width) p.dx *= -1;
-if(p.y<0 || p.y>canvas.height) p.dy *= -1;
-
-});
-
-requestAnimationFrame(animate);
-
-}
-
-animate();
+})();
 
 </script>
 
